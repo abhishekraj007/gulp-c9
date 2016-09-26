@@ -17,6 +17,8 @@ gulp.task('style', function(){
     gulp.src('scss/*.scss')
         .pipe(sass({outputStyle: 'expanded'}))
         .pipe(plumber())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions']}))
         .pipe(gulp.dest('css/'));
 });
 
@@ -32,7 +34,7 @@ gulp.task('image', function(){
 // Livereloading
 gulp.task('reload', function(){
     sync({
-       files: '*.php, *.html, scss/*.scss', 
+       files: '*.php, *.html, scss/*.scss, js/*.js', 
        port: 8082
     });
 });
